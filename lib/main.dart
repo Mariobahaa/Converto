@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'currencytab.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Converto',
       theme: ThemeData.dark().copyWith(
         primaryColor: Colors.blue.shade600,
+        accentColor: Colors.blue.shade600,
         textTheme: Theme.of(context).textTheme.apply(
               fontFamily: 'Ubuntu',
               bodyColor: Colors.white,
@@ -64,9 +66,7 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         body: TabBarView(
           children: <Widget>[
-            Icon(
-              Icons.monetization_on,
-            ),
+            CurrencyTab(),
             Icon(
               Icons.monetization_on,
             ),
