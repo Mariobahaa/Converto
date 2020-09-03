@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Currency Converter',
+      title: 'Converto',
       theme: ThemeData.dark().copyWith(
         primaryColor: Colors.blue.shade600,
         textTheme: Theme.of(context).textTheme.apply(
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
               displayColor: Colors.white,
             ),
       ),
-      home: MyHomePage(title: 'Currency Converter'),
+      home: MyHomePage(title: 'Converto'),
     );
   }
 }
@@ -24,35 +24,14 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -61,11 +40,42 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                  child: Icon(
+                Icons.monetization_on,
+              )),
+              Tab(
+                  child: Icon(
+                Icons.functions,
+              )),
+              Tab(
+                  child: Icon(
+                Icons.query_builder,
+              )),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Icon(
+              Icons.monetization_on,
+            ),
+            Icon(
+              Icons.monetization_on,
+            ),
+            Icon(
+              Icons.monetization_on,
+            ),
+          ],
+        ),
       ),
-      //body:
     );
   }
 }
